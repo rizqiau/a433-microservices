@@ -1,0 +1,35 @@
+version: "3.8"
+
+# Blok utama dimana semua service (container) didefinisikan.
+services:
+  # Kriteria: Memiliki service bernama 'item-app'.
+  item-app:
+    # Kriteria: Menggunakan image item-app dari Docker Hub.
+    image: rizqiau/item-app:v1
+    # Saran: Menerapkan restart policy.
+    # 'always' berarti container akan selalu coba restart jika berhenti.
+    restart: always
+    # Kriteria: Melakukan port mapping ke port 80 di host.
+    # Memetakan port 80 di komputer host ke port 8080 di dalam container.
+    ports:
+      - "80:8080"
+    # Kriteria: Pastikan item-app berjalan setelah item-db.
+    # Ini memastikan container database sudah siap sebelum aplikasi mencoba terhubung.
+    depends_on:
+      - item-db
+
+  # Kriteria: Memiliki service bernama 'item-db'.
+  item-db:
+    # Kriteria: Menggunakan image mongo:3 dari Docker Hub.
+    image: mongo:3
+    # Saran: Menerapkan restart policy.
+    restart: always
+    # Kriteria: Memakai volume bernama app-db dengan target /data/db.
+    # Ini memastikan data database tetap ada walaupun container dihapus dan dibuat ulang.
+    volumes:
+      - app-db:/data/db
+
+# Blok untuk mendefinisikan volume yang akan digunakan oleh services.
+volumes:
+  # Kriteria: Memiliki satu buah volume bernama app-db.
+  app-db:

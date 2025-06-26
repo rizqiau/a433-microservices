@@ -1,0 +1,1 @@
+URL_DOCKER_HUB=https://hub.docker.com/r/rizqiau/item-app
