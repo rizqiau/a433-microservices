@@ -1,0 +1,11 @@
+# mongo-configmap.yml
+# ConfigMap untuk menyimpan data konfigurasi MongoDB.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+data:
+  # Kunci data yang akan menjadi file mongo.conf di dalam container.
+  mongo.conf: |
+    storage:
+      dbPath: /data/db

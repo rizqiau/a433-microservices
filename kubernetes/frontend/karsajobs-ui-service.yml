@@ -1,0 +1,16 @@
+# karsajobs-ui-service.yml
+# Service untuk mengekspos aplikasi frontend ke luar cluster.
+apiVersion: v1
+kind: Service
+metadata:
+  name: karsajobs-ui-service
+spec:
+  type: NodePort
+  selector:
+    app: karsajobs-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+      # Port yang akan diekspos di node.
+      nodePort: 30000

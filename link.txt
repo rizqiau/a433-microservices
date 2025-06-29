@@ -1,0 +1,2 @@
+URL_DOCKER_HUB_KARSAJOBS=https://hub.docker.com/r/rizqiau/karsajobs
+URL_DOCKER_HUB_KARSAJOBS_UI=https://hub.docker.com/r/rizqiau/karsajobs-ui

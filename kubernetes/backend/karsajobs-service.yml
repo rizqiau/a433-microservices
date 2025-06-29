@@ -1,0 +1,16 @@
+# karsajobs-service.yml
+# Service untuk mengekspos aplikasi backend ke luar cluster.
+apiVersion: v1
+kind: Service
+metadata:
+  name: karsajobs-service
+spec:
+  type: NodePort
+  selector:
+    app: karsajobs
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      # Port yang akan diekspos di node.
+      nodePort: 30080

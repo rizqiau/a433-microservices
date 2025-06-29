@@ -1,0 +1,25 @@
+# karsajobs-ui-deployment.yml
+# Deployment untuk aplikasi frontend karsajobs-ui.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karsajobs-ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karsajobs-ui
+  template:
+    metadata:
+      labels:
+        app: karsajobs-ui
+    spec:
+      containers:
+        - name: karsajobs-ui
+          # Ganti <username-docker> dengan username Docker Hub Anda.
+          image: rizqiau/karsajobs-ui:latest
+          env:
+            - name: VUE_APP_BACKEND
+              value: "http://karsajobs-service:8080"
+          ports:
+            - containerPort: 8000
