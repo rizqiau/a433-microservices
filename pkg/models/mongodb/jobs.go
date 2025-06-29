@@ -28,8 +28,8 @@ func (m *JobModel) GetJobPosts(ctx context.Context) ([]*models.JobPost, error) {
 		return nil, err
 	}
 
-	var jobposts []*models.JobPost
-
+	jobposts := make([]*models.JobPost, 0)
+	
 	if err = data.All(ctx, &jobposts); err != nil {
 		return nil, err
 	}
